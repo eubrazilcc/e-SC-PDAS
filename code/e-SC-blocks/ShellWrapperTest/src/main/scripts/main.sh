@@ -2,13 +2,15 @@
 
 /usr/bin/printenv
 
-ls
-
-
-
 ###Below are 3 blocks of main.sh under the heading
 
 ###OphidiaContainer main.sh
+source $INPUT__input_files
+
+echo "$INPUT__input_files" >> $OUTPUT__output_properties  # Import properties to the block
+cat "$INPUT__input_files" >> $OUTPUT__output_properties  # Copy properties to the block
+
+
 OUTFILE=$( mktemp output-XXXX.csv )
 echo $OUTFILE >> $OUTPUT__output_files
 
@@ -18,6 +20,8 @@ $DEP__OphidiaTerminal__oph_term oph_term -u $1 $PROP__u -p $2 $PROP__p -H $3 $PR
 ###OphidiaImportCube main.sh
 OUTFILE=$( mktemp output-XXXX.csv )
 echo $OUTFILE >> $OUTPUT__output_files 
+
+echo "$PROP__u" >> $OUTPUT__output_properties  ### test, load username into properties
 
 $DEP__OphidiaTerminal__oph_term oph_term -u $1 $PROP__u -p $2 $PROP__p -H $3 $PROP__H -P $4 $PROP__P -e "oph_importnc container=$PROP__container;exp_dim=$PROP__exp_dim;host_partition=$PROP__host_partition;imp_dim=$PROP__imp_dim;measure=$PROP__measure;src_path=$PROP__src_path;compressed=$PROP__compressed;exp_concept_level=$PROP__exp_concept_level;filesystem=$PROP__filesystem;imp_concept_level=$PROP__imp_concept_level;ndb=$PROP__ndb;ndbms=$PROP__ndbms;nhost=$PROP__nhost;subset_filter=$PROP__subset_filter;subset_dims=$PROP__subset_dims;subset_type=$PROP__subset_type;" | tee -a "$OUTFILE"
 
@@ -31,6 +35,7 @@ OUTFILE=$( mktemp output-XXXX.csv )
 echo $OUTFILE >> $OUTPUT__output_files
 echo $INPUT__input_files
 
+echo "$PROP__u" >> $OUTPUT__output_properties  #error, no properties loaded and no value.
 
 ID="0;100"   ##Can be set as to a Property for improvement
 minimumRange="0;1" #minimum range required to accept in the commands 
