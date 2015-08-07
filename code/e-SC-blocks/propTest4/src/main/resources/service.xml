@@ -71,10 +71,10 @@
     <!--                                  name used for searching is set-->
     <!--                                  in the default attribute      -->
     <Properties>
-	<Property name="u" default="u" type="String" description="username#jcala"/>
-	<Property name="p" default="p" type="String" description="passwor#JtAG5hYE"/>
-	<Property name="H" default="H" type="String" description="host193.204.199.174"/>
-	<Property name="P" default="P" type="String" description="port44444"/> 
+	<Property name="u" default="u" type="String" description="username"/>
+	<Property name="p" default="p" type="String" description="password"/>
+	<Property name="H" default="H" type="String" description="host"/>
+	<Property name="P" default="P" type="String" description="port"/> 
         <!--Property name="WaitForDebugConnection" type="Boolean" description="Should the service wait for a debug connection when it is executed" default="false"/>
         <Property name="DebugConnectionTimeout" type="Integer" description="Length of time to wait for a debug connection in seconds" default="120"/-->
         <Property name="DebugMode" default="false" type="Boolean" category="Debugging" description="" />
