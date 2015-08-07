@@ -10,7 +10,6 @@ source $INPUT__input_files
 echo "$INPUT__input_files" >> $OUTPUT__output_properties  # Import properties to the block
 cat "$INPUT__input_files" >> $OUTPUT__output_properties  # Copy properties to the block
 
-
 OUTFILE=$( mktemp output-XXXX.csv )
 echo $OUTFILE >> $OUTPUT__output_files
 
