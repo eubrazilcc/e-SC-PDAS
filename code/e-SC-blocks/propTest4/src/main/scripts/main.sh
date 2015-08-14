@@ -8,9 +8,8 @@
 # Pass input files from input-files -> output-files. Literally, append file
 # names from the input port to the file indicated by the output port variable.
 # 
-for f in "${INPUT__input_files__LIST[@]}" ; do
-    echo "$f" >> $OUTPUT__output_files
-done
+##Removed, conflicting with author's code, issue of cube id passing resolved with use of additional use of file-wrapper implementations.
+## More to be changed on other blocks
 
 OUTFILE=$( mktemp output-XXXX.txt )
 echo $OUTFILE >> $OUTPUT__output_properties
