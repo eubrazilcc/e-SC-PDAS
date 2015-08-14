@@ -1,18 +1,12 @@
 #!/bin/bash
-/usr/bin/printenv
 
-# Pass input CSV data from input x -> output y
-#
-
-
-# Pass input files from input-files -> output-files. Literally, append file
-# names from the input port to the file indicated by the output port variable.
-# 
 ##Removed, conflicting with author's code, issue of cube id passing resolved with use of additional use of file-wrapper implementations.
-## More to be changed on other blocks
+## Changed on all blocks
 
-OUTFILE=$( mktemp output-XXXX.txt )
-echo $OUTFILE >> $OUTPUT__output_properties
+##Implementations on all blocks has been changed to fix the cube id and explore issue.  
+
+OUTFILE=$( mktemp output-XXXX.txt )   ###subject to change depending on the output 
+echo $OUTFILE >> $OUTPUT__output_properties ### possible later test
 
 for f in $BLOCK_HOME/scripts/output-*.txt; do
 cat $INPUT__input_files > "$OUTFILE"
