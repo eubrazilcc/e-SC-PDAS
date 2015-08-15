@@ -27,22 +27,24 @@ done
 # echo "not done"
 # fi
 
-#source $INPUT__input_files
+###### ImportCube.sh
+function checkCubeName
+{
+if [ "$PROP__cubeName" == "$PROP__container" ]
+then
+  echo "Cube name is identical to container"
+  importCube
+exit 0
+else 
+  echo "Please make sure you selected the same cube name to the container"
+exit 1
+fi
+}
 
-#echo "$PROP__u=jcala" >> $OUTPUT__u
-#echo "$PROP__p=password1" >> $OUTPUT__p
-#echo "$PROP__H=Host1" >> $OUTPUT__H
-#echo "$PROP__P=Port1" >> $OUTPUT__P
+checkCubeName
 
-#echo "$PROP__u=jcala" >> $OUTFILE
-#echo "$PROP__p=password" >> $OUTFILE
-#echo "$PROP__H=Host" >> $OUTFILE
-#echo "$PROP__P=Port" >> $OUTFILE
-
-#echo "$INPUT__input_files" >> $OUTPUT__output_properties  # Import properties to the block
-#cat "$INPUT__input_files" >> $OUTPUT__output_properties  # Copy properties to the block
-
-#$DEP__OphidiaTerminal__oph_term oph_term -u $1 $PROP__u -p $2 $PROP__p -H $3 $PROP__H -P $4 $PROP__P -e "oph_createcontainer container=$PROP__container;dim=$PROP__dim;dim_type=$PROP__dim_type;hierarchy=$PROP__hierarchy;" | tee -a "$OUTFILE"
-
-# echo "#!/bin/bash" > input2.txt
+function importCube
+{
+$DEP__OphidiaTerminal__oph_term oph_term -u $1 $PROP__u -p $2 $PROP__p -H $3 $PROP__H -P $4 $PROP__P -e ""
+}
 
