@@ -17,5 +17,14 @@ do
 ###run the command sequence
 done
 
+TEST new properties output  - declare properties
+##testing local
+for v in ${properties}; do
+echo "$v" >> $OUTPUT__output_properties
+done
+
+
+
+
 
 
