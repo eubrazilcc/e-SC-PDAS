@@ -3,6 +3,24 @@
 
 # Pass input CSV data from input x -> output y
 #
+for f in $BLOCK_HOME/scripts/output-*.txt; do
+cat $INPUT__input_files > "$OUTFILE"
+done
+
+# INPUTFILE=$BLOCK_HOME/scripts/input2.txt
+# echo $INPUTFILE >> $OUTPUT__output_properties
+
+# INFILE=$BLOCK_HOME/scripts/input2.txt
+
+# if [ -f "$INFILE" ]; 
+# then
+# cat $INPUT__input_files $INPUTFILE
+#cp $INPUT__input_files $INPUTFILE
+# echo "complete"
+# cat $INPUTFILE
+# else
+# echo "not done"
+# fi
 
 
 # Pass input files from input-files -> output-files. Literally, append file
