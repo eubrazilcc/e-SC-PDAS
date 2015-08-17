@@ -1,15 +1,26 @@
 #!/bin/bash
 
-##Removed, conflicting with author's code, issue of cube id passing resolved with use of additional use of file-wrapper implementations.
+## Issue of cube id passing resolved with use of additional use of file-wrapper implementations.
 ## Changed on all blocks
-
-##Implementations on all blocks has been changed to fix the cube id and explore issue.  
+## Implementations on all blocks has been changed to fix the cube id and explore issue.  
 
 OUTFILE=$( mktemp output-XXXX.txt )   ###subject to change depending on the output 
 echo $OUTFILE >> $OUTPUT__output_properties ### possible later test
 
 
-###### ImportCube.sh
+###### ImportCube.sh########
+function count()
+{
+if [ "$PROP__u" != "" ] && [ "$PROP__p" != "" ] && [ "$PROP__H" != "" ] && [ "$PROP__P" != "" ];
+then
+  echo "Authorisation completed."
+  echo "Welcome $PROP__u."
+else
+  echo "Sorry, connection invalid. Please enter all the valid log-in details"
+fi
+}
+count
+
 function checkCubeName()
 {
 if [ "$PROP__cubeName" == "$PROP__container" ]
@@ -22,7 +33,6 @@ else
 exit 1
 fi
 }
-
 checkCubeName
 
 function checkParameters()
@@ -52,3 +62,4 @@ var_parameters="$var_mandatory $var_non_mandatory"
 
   $DEP__OphidiaTerminal__oph_term oph_term -j -u $1 $PROP__u -p $2 $PROP__p -H $3 $PROP__H -P $4 $PROP__P -e "oph_importnc $var_parameters"
 }
+importNC
