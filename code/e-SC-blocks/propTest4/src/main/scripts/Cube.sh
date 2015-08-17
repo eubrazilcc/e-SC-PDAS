@@ -8,24 +8,6 @@
 OUTFILE=$( mktemp output-XXXX.txt )   ###subject to change depending on the output 
 echo $OUTFILE >> $OUTPUT__output_properties ### possible later test
 
-for f in $BLOCK_HOME/scripts/output-*.txt; do
-cat $INPUT__input_files > "$OUTFILE"
-done
-
-# INPUTFILE=$BLOCK_HOME/scripts/input2.txt
-# echo $INPUTFILE >> $OUTPUT__output_properties
-
-# INFILE=$BLOCK_HOME/scripts/input2.txt
-
-# if [ -f "$INFILE" ]; 
-# then
-# cat $INPUT__input_files $INPUTFILE
-#cp $INPUT__input_files $INPUTFILE
-# echo "complete"
-# cat $INPUTFILE
-# else
-# echo "not done"
-# fi
 
 ###### ImportCube.sh
 function checkCubeName()
