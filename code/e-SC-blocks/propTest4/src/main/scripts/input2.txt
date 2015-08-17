@@ -17,14 +17,20 @@ do
 ###run the command sequence
 done
 
-TEST new properties output  - declare properties
+
+###
+###TEST new properties output  - declare properties
 ##testing local
 for v in ${properties}; do
 echo "$v" >> $OUTPUT__output_properties
 done
 
-
-
+##alternative method
+##To test on eSC for prop test
+while read p; 
+do
+  echo $p
+done < prop.csv 
 
 
 
