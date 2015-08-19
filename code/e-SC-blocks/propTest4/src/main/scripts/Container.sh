@@ -1,4 +1,13 @@
 #!/bin/bash
+function container()
+{
+if [ -n "$PROP__container" == "" ];
+then
+  echo "Please input the container name required. The data operator cannot be processed without a container name"
+else
+  echo "You have supplied a container name: $PROP__container"
+fi
+}
 
 function count()
 {
