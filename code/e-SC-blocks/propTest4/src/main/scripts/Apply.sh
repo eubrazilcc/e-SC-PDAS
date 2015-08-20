@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ "$PROP__u" != "" ] && [ "$PROP__p" != "" ] && [ "$PROP__H" != "" ] && [ "$PROP__P" != "" ];
+then
+  echo "Authorisation completed."
+else
+  echo "Sorry, connection invalid. Please enter all the valid log-in details"
+fi
+
 if [ "$PROP__ncores" == "" ];
 then
 	echo "Ncores set to default value"
