@@ -19,21 +19,16 @@ else
   echo "Sorry, connection invalid. Please enter all the valid log-in details"
 fi
 }
-count
 
 function checkCubeName()
 {
 if [ "$PROP__cubeName" == "$PROP__container" ]
 then
   echo "Cube name is identical to container"
-  importCube
-exit 0
 else 
   echo "Please make sure you selected the same cube name to the container"
-exit 1
 fi
 }
-checkCubeName
 
 function checkParameters()
 {
@@ -45,14 +40,11 @@ do
 if [ "${parameter}" != "" ]
 then
   importNC
-exit 0
 else
   echo "You need to fill in all the mandatory parameters required."
-exit 1
 fi
 done
 }
-checkParameters
 
 function importNC()
 {
@@ -62,4 +54,3 @@ var_parameters="$var_mandatory $var_non_mandatory"
 
   $DEP__OphidiaTerminal__oph_term oph_term -j -u $1 $PROP__u -p $2 $PROP__p -H $3 $PROP__H -P $4 $PROP__P -e "oph_importnc $var_parameters"
 }
-importNC
