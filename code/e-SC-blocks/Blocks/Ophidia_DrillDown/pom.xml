@@ -24,7 +24,7 @@
     <version>3.1-SNAPSHOT</version>
   </parent>
     <groupId>org.myblocks</groupId>
-    <artifactId>Ophidia_Drill</artifactId>
+    <artifactId>Ophidia_DrillDown</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
