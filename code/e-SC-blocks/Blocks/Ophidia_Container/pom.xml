@@ -24,7 +24,7 @@
     <version>3.1-SNAPSHOT</version>
   </parent>
     <groupId>org.myblocks</groupId>
-    <artifactId>OphidiaContainer</artifactId>
+    <artifactId>Ophidia_Container</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
