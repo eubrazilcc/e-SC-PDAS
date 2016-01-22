@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  e-Science Central
-  Copyright (C) 2008-2015 School of Computing Science, Newcastle University
+  Copyright 2014-2015 EUBrazilCC (EU-Brazil Cloud Connect)
 
   This program is free software; you can redistribute it and/or
   modify it under the terms of the GNU General Public License
@@ -16,25 +15,32 @@
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin Street, 5th Floor, Boston, MA 02110-1301, USA.
---><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-    <artifactId>maven-archetypes</artifactId>
-    <groupId>com.connexience</groupId>
-    <version>3.1-SNAPSHOT</version>
-  </parent>
-    <groupId>org.myblocks</groupId>
-    <artifactId>propTest4</artifactId>
-    <version>1.0</version>
+    <groupId>eu.eubcc.esc.ophidia</groupId>
+    <artifactId>PDAS-WFs</artifactId>
     <packaging>jar</packaging>
-
     <name>${project.artifactId}</name>
-    <url>http://www.esciencecentral.co.uk</url>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <skipTests>true</skipTests>
+        <doUpload>true</doUpload>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.connexience</groupId>
+            <artifactId>workflow-engine</artifactId>
+            <version>3.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.connexience</groupId>
+            <artifactId>server-common</artifactId>
+            <version>3.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -54,6 +60,12 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
             </plugin>
 
             <plugin>
@@ -80,26 +92,30 @@
                 <artifactId>upload-plugin</artifactId>
                 <version>3.1-SNAPSHOT</version>
                 <configuration>
-                    <!-- The e-SC server host for uploader -->
-                    <serverURL>${serverURL}</serverURL>
-                    <!-- Your username in e-SC -->
-                    <username>${username}</username>
-                    <!-- Your password in e-SC -->
-                    <password>${password}</password> 
+                    <!-- Web server host for uploader -->
+                    <webHost>${hostname}</webHost>
+                    <!-- HTTP Port on web host for uploading -->
+                    <httpPort>${port}</httpPort>    
+                    <!-- Upload location on web sever -->
+                    <context>/workflow</context>                    
                     <!-- The type of object to upload: either 'service' or 'library' -->
                     <objectType>service</objectType>
-                    <!-- Full path of folder in e-Science Central to upload the object to, e.g. /Services/test -->
-                    <folderPath>/Services</folderPath>
-                    <!-- The category under which the service will be listed -->
-                    <category>My Services</category>
-                    <!-- Upload URL context on the web sever -->
-                    <!--context>/workflow</context-->
-                    <!-- e-SC block ID -->
+                    <!-- 
+                        Full path of folder in e-Science Central to upload the object to.  
+                        This needs to exist in e-SC beforehand.  e.g. /services/test
+                    -->
+                    <folderPath>/Workflows</folderPath>
+                    <!-- URL of the e-SC API Server e.g. http://www.esciencecentral.co.uk/APIServer -->
+                    <serverURL>${PDAS.serverURL}</serverURL>
+                    <!-- Your username in e-SC -->
+                    <username>${PDAS.username}</username>
+                    <!-- Your password in e-SC -->
+                    <password>${PDAS.password}</password>
+                    <!-- Request a specific block id -->
                     <id>${project.groupId}.${project.artifactId}-${project.version}</id>
-                    <!-- Whether to upload the block during build process -->
-                    <doUpload>true</doUpload>
-                    <!-- Whether to make the block public -->
-                    <makePublic>true</makePublic>
+
+                    <makePublic>${makePublic}</makePublic>
+                    <doUpload>${doUpload}</doUpload>
                 </configuration>
                 <executions>
                     <execution>
@@ -108,8 +124,9 @@
                             <goal>upload</goal>
                         </goals>
                     </execution>
-                </executions>                
+                </executions>
             </plugin>
         </plugins>
     </build>
+
 </project>
